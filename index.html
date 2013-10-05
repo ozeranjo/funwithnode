@@ -10,10 +10,10 @@
 			color: red;
 			font-size: 12px;
 		}
-
+		#gameResult {
+			 display:none;
+		}
 	</style>
-
-<script src="/node_modules/lib/socket.io.js"></script>
 
 </head>
 
@@ -33,13 +33,18 @@
 	<div id="players"></div>
 
 	<div id="questionContainer">
-		<div id="question"><br/>Randomly generated question will go here.</div>
+		<div id="question"><br/>Your question will display here when the game begins.</div>
 		<form id="answerform">
 				<input size="5" id="answer"></input>
 				<input type="submit"></input>
 		</form>
 		<div id="answer_received"></div>
 	</div>
+
+	<div id="gameResult">
+		<div id="winner">Winner: </div>
+	</div>
+
 
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="/socket.io/socket.io.js"></script>
@@ -50,10 +55,12 @@
 		var $playerError = $('#nameError');
 		var $playerName = $('#playername');
 		var $players = $('#players');
+		var $question = $('#question');
 		var $answerForm = $('#answerform');
 		var $answer = $('#answer');
 		var $answerReceived = $('#answer_received');
-		var $userId = Math.random();
+		var $gameOutcome = $('#gameResult');
+		var $gameWinner = $('#winner');
 
 		$answerForm.submit(function(e) {
 			e.preventDefault();
@@ -73,6 +80,22 @@
 				}
 			});
 			$playerName.val('');
+		});
+
+		socket.on('new game', function(game) {
+			$question.html(game);
+		});
+
+		socket.on('game over', function(data) {
+			console.log("What is in data: " + data);
+			if(data == "winner") {
+				$('#gameResult').show();
+				$gameWinner.html("You are the " + data);
+			}
+			else if(data == "loser") {
+				$('#gameResult').show();
+				$gameWinner.html("You are the " + data);	
+			}
 		});
 
 		socket.on('playernames', function(data) {
