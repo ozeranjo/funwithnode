@@ -1,0 +1,15 @@
+{
+  "name": "nodemath",
+  "subdomain": "ozeranjo-nodemath",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "version": "0.0.1-2",
+  "dependencies": {
+    "socket.io": "latest",
+    "express": "latest"
+  },
+  "engines": {
+    "node": "0.10.x"
+  }
+}
