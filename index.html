@@ -1,13 +1,95 @@
 <html>
 <head>
-<title>Nodemath</title>
+	<title>Nodemath</title>
+	<style>
+		#questionContainer {
+			display:none;
+		}
+		#nameError {
+			margin: 3px;
+			color: red;
+			font-size: 12px;
+		}
+
+	</style>
 
 <script src="/node_modules/lib/socket.io.js"></script>
 
 </head>
 
-<body>Game content coming shortly via JS
+<body>
+
+	<div><strong>Welcome to Math Trivia</strong></div>
+	
+	<div id="playerNameEntry">
+		<span>Player name:<span>
+		<form id="playerNameForm">
+			<input size="40" id="playername"></input>
+			<input type="submit"></input>
+		</form>
+		<div id="nameError"></div>
+	</div>
+
+	<div id="players"></div>
+
+	<div id="questionContainer">
+		<div id="question"><br/>Randomly generated question will go here.</div>
+		<form id="answerform">
+				<input size="5" id="answer"></input>
+				<input type="submit"></input>
+		</form>
+		<div id="answer_received"></div>
+	</div>
+
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+	jQuery(function($){
+		var socket = io.connect();
+		var $playerForm = $('#playerNameForm');
+		var $playerError = $('#nameError');
+		var $playerName = $('#playername');
+		var $players = $('#players');
+		var $answerForm = $('#answerform');
+		var $answer = $('#answer');
+		var $answerReceived = $('#answer_received');
+		var $userId = Math.random();
+
+		$answerForm.submit(function(e) {
+			e.preventDefault();
+			socket.emit('send answer', $answer.val());
+			$answer.val('');
+		});
+
+		$playerForm.submit(function(e) {
+			e.preventDefault();
+			socket.emit('new player', $playerName.val(), function(data) {
+				if(data) {
+					$('#playerNameEntry').hide();
+					$('#questionContainer').show();
+				}
+				else {
+					$playerError.html('Error: that player name is already in use, try again.');
+				}
+			});
+			$playerName.val('');
+		});
+
+		socket.on('playernames', function(data) {
+			var html = '';
+			for (i=0; i < data.length; i++)
+			{
+				html += data[i] + '<br/>'
+			}
+			$players.html(html);
+		});
+
+		socket.on('new answer received', function(data) {
+			$answerReceived.append("<strong>" + data.playername + ": </strong>" + data.answer + "<br/>");
+		});
+
+	});
+</script>
 
 </body>
-
 </html>
