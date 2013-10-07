@@ -13,16 +13,32 @@
 		#gameResult {
 			 display:none;
 		}
+		#gamePoints {
+ 	 		 display:none;
+		}
+		ul {
+			list-style: none;
+			padding-left:0;
+		}
+		.player {
+			list-style-type:none;
+		}
 	</style>
 
 </head>
 
 <body>
 
-	<div><strong>Welcome to Math Trivia</strong></div>
+	<div><strong>Welcome to the Math Trivia RT game</strong><br/>
+	</div>
 	
+	<div id="players">
+		<div id="playerCount"></div>
+		<div id="playerScores"></div>
+	</div>
+
 	<div id="playerNameEntry">
-		<span>Player name:<span>
+		<br/><span>Player name:<span>
 		<form id="playerNameForm">
 			<input size="40" id="playername"></input>
 			<input type="submit"></input>
@@ -30,10 +46,9 @@
 		<div id="nameError"></div>
 	</div>
 
-	<div id="players"></div>
 
 	<div id="questionContainer">
-		<div id="question"><br/>Your question will display here when the game begins.</div>
+		<div id="question"><br/>Your question will display here when a second player joins...</div>
 		<form id="answerform">
 				<input size="5" id="answer"></input>
 				<input type="submit"></input>
@@ -43,6 +58,10 @@
 
 	<div id="gameResult">
 		<div id="winner">Winner: </div>
+	</div>
+
+	<div id="gamePoints">
+		<div id="points">Your points: </div>
 	</div>
 
 
@@ -55,12 +74,16 @@
 		var $playerError = $('#nameError');
 		var $playerName = $('#playername');
 		var $players = $('#players');
+		var $playerCount = $('#playerCount');
+		var $playerScores = $('#playerScores');
 		var $question = $('#question');
 		var $answerForm = $('#answerform');
 		var $answer = $('#answer');
 		var $answerReceived = $('#answer_received');
 		var $gameOutcome = $('#gameResult');
 		var $gameWinner = $('#winner');
+		var $gamePoints = $('#gamePoints');
+		var $pointTotal = $('#points');
 
 		$answerForm.submit(function(e) {
 			e.preventDefault();
@@ -74,6 +97,8 @@
 				if(data) {
 					$('#playerNameEntry').hide();
 					$('#questionContainer').show();
+					$('#players').show();
+					$('#playerScores').show();
 				}
 				else {
 					$playerError.html('Error: that player name is already in use, try again.');
@@ -83,32 +108,55 @@
 		});
 
 		socket.on('new game', function(game) {
-			$question.html(game);
+			$question.html('<br/>' + game);
+		});
+
+		socket.on('score update', function(data) {
+			var html;
+			
+			// Check each score retrieved to see if it matches any of our current players
+			$(data).each(function(key, score) {
+				$('ul li').each(function() {
+					text = $(this).text();
+					
+					// Do a check in case the game has already started and the pts are showing
+					if(text.indexOf(" (") != -1 ) {
+						text = text.substr(0,text.indexOf(" ("));
+					}
+					
+					// If they are exactly the same, replace the string with the current point total
+					if(text.valueOf() == score.name.valueOf()) {
+						$(this).html('<li class="player">' + score.name + ' (' + score.score + ' pts...)');
+					}
+				});
+			});
 		});
 
 		socket.on('game over', function(data) {
-			console.log("What is in data: " + data);
-			if(data == "winner") {
-				$('#gameResult').show();
-				$gameWinner.html("You are the " + data);
-			}
-			else if(data == "loser") {
-				$('#gameResult').show();
-				$gameWinner.html("You are the " + data);	
-			}
+			$('#gameResult').show();
+			$gameWinner.html("You are the " + data + "!");
 		});
 
-		socket.on('playernames', function(data) {
-			var html = '';
+		socket.on('players', function(data) {
+			var playercount = 0;
+			if(data.length > 0) {
+				playercount = data.length;
+			}
+			
+			// Set up the player list and show the count
+			var html_list = '<ul>';
+			var html = '<br/><strong>Player List</strong> (' + playercount +' connected)</br>';
 			for (i=0; i < data.length; i++)
 			{
-				html += data[i] + '<br/>'
+				html_list += '<li class="player">' + data[i];
 			}
-			$players.html(html);
+			html_list += '</ul>';
+			$playerCount.html(html);
+			$playerScores.html(html_list);
 		});
 
 		socket.on('new answer received', function(data) {
-			$answerReceived.append("<strong>" + data.playername + ": </strong>" + data.answer + "<br/>");
+			// Not implemented
 		});
 
 	});
