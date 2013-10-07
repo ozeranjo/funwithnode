@@ -126,7 +126,10 @@
 					
 					// If they are exactly the same, replace the string with the current point total
 					if(text.valueOf() == score.name.valueOf()) {
-						$(this).html('<li class="player">' + score.name + ' (' + score.score + ' pts...)');
+						if(score.score == 1)
+							$(this).html('<li class="player">' + score.name + ' (' + score.score + ' point)');
+						else
+							$(this).html('<li class="player">' + score.name + ' (' + score.score + ' points)');
 					}
 				});
 			});
