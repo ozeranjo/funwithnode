@@ -52,7 +52,9 @@ function getPoints() {
 };
 
 io.sockets.on('connection', function(socket) {
-io.sockets.emit('players', { data: playernames });
+io.sockets.emit('players', playernames);
+io.sockets.emit('score update', points);
+
 
 	socket.on('new player', function(data, callback) {
 		// TODO: should probably extend with binary search instead
@@ -67,6 +69,7 @@ io.sockets.emit('players', { data: playernames });
 			socket.playername = data;
 			playernames.push(socket.playername);
 			io.sockets.emit('players', playernames);
+			io.sockets.emit('score update', points);
 	
 			// Only start the game if there is more than 1 player...
 			if(playernames.length > 1) {
@@ -119,6 +122,7 @@ io.sockets.emit('players', { data: playernames });
 			return;
 		playernames.splice(playernames.indexOf(socket.playername), 1);
 		io.sockets.emit('players', playernames);
+		io.sockets.emit('score update', points);
 
 		// Note: the score for the disconnecting player name will not be removed though it will be purged when the server restarts
 		// TODO: use persistent Mongo or Redis storage
