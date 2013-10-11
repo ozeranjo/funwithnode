@@ -93,6 +93,11 @@
 
 		$playerForm.submit(function(e) {
 			e.preventDefault();
+			if( document.getElementById('playername').value === '' ){
+     			alert('Please enter a player name.');
+     			return;
+    		}
+
 			socket.emit('new player', $playerName.val(), function(data) {
 				if(data) {
 					$('#playerNameEntry').hide();
