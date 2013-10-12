@@ -1,9 +1,13 @@
 var express = require('express'),
+	redis = require("redis"),
+	redisPort = 6379,
+	redisHost = "127.0.0.1",
 	app = express(),
 	server = require('http').createServer(app),
 	io = require('socket.io').listen(server),
-	playernames = [];
-	playerscores = {};
+	redisClient = redis.createClient(redisPort, redisHost),
+	playernames = [],
+	playerscores = {},
     points = {};
 
 
