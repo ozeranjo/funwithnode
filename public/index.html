@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Title here -->
+		<title>A real-time math game demonstrating the power of Node.js & Socket.IO</title>
+		<!-- Description, Keywords and Author -->
+		<meta name="description" content="The real-time math game, powered by Node.js and Socket.IO">
+		<meta name="keywords" content="Math, Node.Js, Socket.IO, Bootstrap">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,600,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Lobster' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Lobster+Two' rel='stylesheet' type='text/css'>
+		<!-- Styles -->
+		<!-- Bootstrap CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!-- Font awesome CSS -->
+		<link href="css/font-awesome.min.css" rel="stylesheet">	
+		<!-- Countdown CSS -->
+		<link href="css/jquery.countdown.css" rel="stylesheet">
+		<!-- Custom CSS -->
+		<link href="css/style.css" rel="stylesheet">
+		<!-- Favicon -->
+		<link rel="shortcut icon" href="#">
+	</head>
+	
+	<body>
+		<!--Header starts-->
+		<header>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6">
+						<!--Header Links Starts-->
+						<div class="header-links">
+							A real-time math game demonstrating the power of Node.js & Socket.IO&nbsp;
+							<span> <a href="#"></a></span>
+						</div>
+						<!--Header Links Ends-->
+					</div>
+					<div class="col-md-6">
+						<!--Header Social Starts-->
+						<div class="header-social pull-right">
+							<a href="http://www.twitter.com/jozeran" class="twitter"><i class="icon-twitter"></i></a><a href="http://www.github.com/ozeranjo/funwithnode" class="github"><i class="icon-github"></i></a>
+							
+						</div>
+						<!--Header Social Ends-->
+					</div>
+				</div>
+			</div>
+		</header>
+		<!--Header ends-->
+         
+      <!--Main starts -->   
+      <div class="main">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="main-logo">
+                     <h1>Math Game</h1>
+                     <div id="questionContainer">
+						<div id="question"><p>Your question will display here when a second player joins...</p></div>
+							<form id="answerform">
+								<input class="form-control input-sm" placeholder="" id="answer"></input><br/>
+								<input type="submit" class="btn btn-default"></input>
+							</form>
+					    <div class="clearfix"></div>
+
+						<div id="answer_received"></div>
+	                     <div id="gameResult">
+							<div id="winner"><p>Winner: </p></div>
+						</div>
+                     </div>
+
+					<div id="playerNameEntry">
+						<div class="playerName-text">
+							<span>Player name:</span>
+						</div>
+						<form id="playerNameForm">
+							<input class="input-small" id="playername"></input><br/><br/>
+							<input type="submit" class="btn btn-default"></input>
+						</form>
+						<div id="nameError" class="alert alert-danger" style="margin-top:10px"><br/>
+						</div>
+					</div>
+                    
+                    <div class="countdown">
+						<div id="countdown2" class="hasCountdown">
+					 		<div id="players">
+ 								<div id="playerCount"></div>
+								<span class="countdown_row countdown_show1">
+									<div id="playerScores">
+									</div>									
+								</span>
+						</div>
+					 </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+	  <!-- Main Ends -->
+	  
+	  
+	  <!-- Subscription Starts -->
+	  <div class="subscription">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<div class="subscribe-text">
+						<span>Last 5 games:<b></b></span>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="firstform">
+							 <div class="input-group">
+							  <span class="input-group-btn">
+							  </span>
+							</div><!-- /input-group -->
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="highScorePlayerName-text"><br/>Highest all-time scoring player: <span class="tblue"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	  </div>
+      <!--Subscription Ends-->
+		<!-- Map starts -->
+		<div class="map">
+			<iframe height="500" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/?ie=UTF8&amp;ll=41.896432,-87.643053&amp;spn=0.022378,0.042272&amp;t=m&amp;z=15&amp;q=600%2BW.%2BChicago&amp;output=embed"></iframe>
+						
+		</div>
+		<!-- Map Ends -->
+		
+		<!-- Footer starts -->
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<span class="features-text"><h1>Features</h1></span>
+					</div>
+				</div>
+				
+				<hr>
+				
+				<div class="row">
+					<div class="col-md-3">
+						<div class="footer-link">
+							<a href="#">Basic mathematical operation</a><br>
+							<a href="#">Real-time connectivity</a><br>
+							<a href="#">Socket connect/disconnect</a>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="footer-link">
+							<a href="#">Express engine</a><br>
+							<a href="#">Bootstrap template</a><br>
+							<a href="#">Clean, responsive design</a>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="footer-link">
+							<a href="#">Integration with redis</a><br>
+							<a href="#">Retrieval of 5 most recent games</a><br>
+							<a href="#">Display of highest scoring player</a>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="footer-link">
+							<a href="#">Player name validation</a><br>
+							<a href="#">Player points tracker</a><br>
+							<a href="#">Winner & loser notifications</a>
+						</div>
+					</div>
+				</div>
+				
+				<hr>
+				
+				<div class="row">
+					<div class="col-md-12">
+						
+						<div class="copy text-center">
+							&copy; 2013 <a href="#">Jonathan Ozeran</a> - Powered by Node.js & Socket.IO
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</footer>
+		<!-- Footer Ends -->
+
+		<!-- Javascript files -->
+		<!-- Socket.IO -->
+		<script src="socket.io/socket.io.js"></script>
+		<!-- jQuery -->
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+		<!-- Bootstrap JS -->
+		<script src="js/bootstrap.min.js"></script>
+		<!-- Respond JS for IE8 -->
+		<script src="js/respond.min.js"></script>
+		<!-- HTML5 Support for IE -->
+		<script src="js/html5shiv.js"></script>
+		<!-- Custom JS -->
+		<script src="js/custom.js"></script>
+	</body>	
+</html>

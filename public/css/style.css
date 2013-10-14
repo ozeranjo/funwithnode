@@ -1,0 +1,495 @@
+/************************
+Designed by : http://responsivewebinc.com
+************************/
+
+/* Custom to Math Game */
+
+#questionContainer{
+	display:none;
+}
+
+#nameError{
+	display:none;
+}
+
+#gameResult{
+	display:none;
+}
+
+#gamePoints{
+ 	display:none;
+}
+
+#answerform{
+	text-align:center;
+}
+
+#playerNameEntry{
+	text-align:center;
+}
+
+.playerName-text{
+	color:#fff;
+	font-size:28px;
+}
+
+.playerName-text i{
+ 	border-radius:50px;
+    background:#1b77b6;
+}
+
+.playerName-text span{
+    font-size:28px;
+}
+
+.playerName-text span b{
+  	font-size:35px;
+  	color:#65b8ff;
+}
+
+.highScorePlayerName-text{
+	color:#fff;
+	font-size:28px;
+}
+
+.highScorePlayerName-text i{
+ 	border-radius:50px;
+    background:#1b77b6;
+}
+
+.highScorePlayerName-text span{
+    font-size:28px;
+}
+
+.highScorePlayerName-text span b{
+  	font-size:35px;
+  	color:#65b8ff;
+}
+
+.features-text{
+   text-align:center;
+   color:#fff;
+   font-family: 'Lobster', cursive;
+   font-size:105px;
+   text-shadow:2px 2px 5px #111;
+   line-height:110px;
+   padding:30px 0px;
+   margin: 0px auto;
+}
+
+/* Basic CSS starts */
+
+body{
+	font-family: 'Open Sans', sans-serif;
+	-webkit-font-smoothing: antialiased;	
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Open Sans', sans-serif;
+}
+
+p{
+	margin:0;
+	padding:0;
+}
+
+a{
+
+}
+
+a:hover{
+
+}
+
+a:hover,a:active,a:focus {
+	outline: 0;
+}
+
+hr{
+
+}
+
+:focus {
+	outline:none;
+}
+
+::-moz-focus-inner {
+	border:0;
+}
+
+/* Basic CSS ends */
+
+.container{
+	width:1000px;
+}
+
+.tblue{
+	color:#65b8ff;
+}
+
+/* Header */
+
+header {
+	border-top:0px solid #FF9782;
+	height:40px;
+	background:#222;
+	border-bottom:1px solid #000;
+	box-shadow: inset 0px 0px 5px #000; 
+}
+
+header .header-links{
+	color:#fff;
+	font-size:13px;
+	color:#ccc;
+}
+
+header .header-links a{
+	color:#ccc;
+	text-decoration:none;
+	font-size:13px;
+	line-height:40px;
+	
+}
+
+header .header-links a:hover{
+	color:#fff;
+}
+
+header .header-social a{
+	line-height:40px;
+	text-decoration:none;
+	display:inline-block;
+	width:40px;
+	text-align:center;
+	color:#fff;
+   font-size:15px;
+   -webkit-transition: background 1s ease;
+   -moz-transition: background 1s ease;
+   -o-transition: background 1s ease;
+   -ms-transition: background 1s ease;
+   transition: background 1s ease;
+}
+
+header .header-social a.facebook{
+	background:#1e78ae;
+}
+
+header .header-social a.twitter{
+	background:#1ba1e2;
+}
+
+header .header-social a.google-plus{
+	background:#f22d0c;
+}
+
+header .header-social a.github{
+	background:#f22d0c;
+}
+
+header .header-social a.pinterest{
+	background:#dd1617;
+}
+
+header .header-social a.linkedin{
+	background:#2d93cf;
+}
+
+header .header-social a:hover{
+   background:#000;
+    -webkit-transition: background 1s ease;
+     -moz-transition: background 1s ease;
+     -o-transition: background 1s ease;
+     -ms-transition: background 1s ease;
+     transition: background 1s ease;
+}
+
+/* Main */
+
+.main{
+   background:#FF4500 url('../img/2.png') repeat;
+   border-top:1px solid #65b8ff;
+   border-bottom:1px solid #65b8ff;
+   
+}
+
+.main .main-logo{
+   padding:30px 0px;
+   
+   
+}
+
+.main .main-logo h1{
+   text-align:center;
+   color:#fff;
+   font-family: 'Lobster', cursive;
+   font-size:135px;
+   text-shadow:2px 2px 5px #111;
+   line-height:140px;
+}
+
+.main .main-logo p{
+   text-align:center;
+   color:#fff;
+   font-family: 'Lobster', cursive;
+   font-size:28px;
+   text-shadow:1px 1px 3px #000;
+}
+
+/* Countdown */
+
+.countdown{
+	width:500px;
+	margin:30px auto;
+}
+
+.countdown .hasCountdown {
+	border: 0px solid #ccc !important;
+	background-color:transparent !important;
+}
+
+.countdown_section {
+	color: #FFF;
+	padding: 10px;
+	margin: 0px;
+	text-transform: uppercase;
+	background:#111 url('../img/3.png') repeat;
+	border-radius:6px;
+	border:1px solid #65b8ff;
+}
+
+.countdown_amount {
+	display: inline-block;
+	font-size: 40px;
+	height: 60px;
+	line-height: 60px;
+	color: #fff;
+	margin: 0px;
+}
+
+/* Subscription */
+
+.subscription{
+	background:#000 url('../img/3.png') repeat;
+	border-top:1px solid #000;
+	border-bottom:1px solid #000;
+	padding:30px 0px;
+}
+
+.subscription .subscribe-text{
+	color:#fff;
+}
+
+.subscription .subscribe-text i{
+	border-radius:50px;
+	background:#1b77b6;
+	height:50px;
+	width:50px;
+	display:inline-block;
+	line-height:50px;
+	text-align:center;
+	border:1px solid #65b8ff;
+	font-size:18px;
+	margin-right:10px;
+}
+
+.subscription .subscribe-text  span{
+	font-size:28px;
+}
+
+.subscription .subscribe-text  span b{
+	font-size:35px;
+	color:#65b8ff;
+}
+
+.subscription .firstform{
+	margin-top:10px;
+}
+
+.subscription .quote{
+	color:#ddd;
+	line-height:30px;
+	font-size:22px;
+	font-family: 'Lobster Two', cursive;
+	text-shadow:2px 2px 3px #000;
+}
+
+/* Map */
+
+.map iframe{
+	position:relative;
+	z-index:100;
+	width:100%;
+	margin-bottom: 10px;
+	padding-bottom:0px !important;
+}
+
+/* Footer */
+
+footer{
+	padding-top:40px;
+	background:#000 url('../img/3.png') repeat;
+	color:#ccc;
+}
+
+footer  a{
+	color:#aaa;
+}
+
+footer a:hover{
+	text-decoration:none;
+	color:#eee;
+}
+
+footer h3{
+	text-align:center;
+	font-size:30px;
+	color:#fff;	
+	font-weight:400 !important;
+	background:#65b8ff;
+	width:200px;
+	margin:0px auto;
+	padding:10px 0px;
+	text-shadow:0px 0px 3px #333;
+	
+	
+}
+
+footer hr{
+	margin-top: 30px;
+	margin-bottom:30px;
+	border-top: #101010 1px solid;
+	border-bottom: #222 1px solid;
+}
+
+footer .footer-link{
+	padding-top:15px;
+}
+
+footer .footer-link a{
+	margin-bottom:10px;
+	display:inline-block;
+}
+
+footer .contact{
+	text-align:center;
+	color:#fff;
+}
+
+footer .contact h4{
+	font-size:25px;
+	line-height:30px;
+}
+
+footer .contact h5{
+	font-size:17px;
+	line-height:30px;
+}
+
+footer .copy{
+	margin-bottom:20px;
+	font-size:13px;
+}
+
+
+
+/* Responsive CSS */
+
+/* Mobile phones */
+@media (max-width: 480px){
+	.countdown{
+		width:250px !important;
+	}
+	
+	.countdown_amount {
+		font-size:20px !important;
+	}
+	
+	.countdown_section{
+		font-size:10px !important;
+	}
+
+}
+
+/* Tablets */
+@media (max-width: 767px){
+	.container{
+		width:100%;
+	}
+	
+	header{
+		height:auto;
+		padding-top:10px;
+		padding-bottom:10px;
+	}
+	
+	header .header-links{
+		text-align:center;
+	}
+	
+	header .header-links span{
+		display:block;
+	}
+	
+	header .header-social {
+		text-align:center;
+		float:none !important;
+	}
+	
+	.main .main-logo h1{
+		font-size:100px;
+	}
+	
+	.countdown{
+		width:350px;
+	}
+	
+	.countdown_amount {
+		font-size:30px;	
+	}
+	
+	
+	.subscription .firstform{
+		margin-top:15px;
+		margin-bottom:15px;
+	}
+	
+	footer h3{
+		margin-left:0px !important;
+	}
+	
+	footer .contact{
+		text-align:left;
+	}
+	
+	footer .copy{
+		text-align:left;
+	}
+}
+
+/* PC */
+@media (min-width: 768px) and (max-width: 979px){
+	header{
+		height:auto;
+		padding-top:10px;
+		padding-bottom:10px;
+	}
+	
+	header .header-links{
+		text-align:center;
+	}
+
+	header .header-links span{
+		display:block;
+	}
+	
+	header .header-social {
+		text-align:center;
+		float:none !important;
+	}
+	
+	.subscription .firstform{
+		margin-top:15px;
+		margin-bottom:15px;
+	}
+	
+}
