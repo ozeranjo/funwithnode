@@ -63,6 +63,9 @@ function Game () {
 	self.evaluated = eval (self.question);
 }
 
+// Instantiate new game object which holds the two integers, the composed question and the calculated, expected result
+var game = new Game();
+
 function getPoints() {
 	var scores = (function() { 
 		
@@ -206,6 +209,8 @@ io.sockets.on('connection', function(socket) {
 			// New game is starting so refresh data for all connected sockets
 			io.sockets.emit('last 5 games', getLast5Games());
 			io.sockets.emit('player high score', getPlayerHighScore());
+
+			// And then send the new game's question around to all of the sockets (including the winner)
 			io.sockets.emit('new game', game.question);
 		}
 
